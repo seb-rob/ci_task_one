@@ -1,0 +1,22 @@
+name: "Continuous Integration for Node Project"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  on-push-job:
+    runs-on: ubuntu-latest
+    steps:  
+      - name: Check out to temp env
+        uses: actions/checkout@v4
+
+      - name: Setup Node env
+        uses: actions/setup-node@v4
+
+      - name: Install dependecies
+        run: npm i
+
+      - name: Build Project
+        run: npm run build
